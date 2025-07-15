@@ -1,20 +1,61 @@
 import sys
 
-from PyQt6.QtCore import QSize
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import (
+    QApplication,
+    QCheckBox,
+    QComboBox,
+    QDateEdit,
+    QDateTimeEdit,
+    QDial,
+    QDoubleSpinBox,
+    QFontComboBox,
+    QLabel,
+    QLCDNumber,
+    QLineEdit,
+    QMainWindow,
+    QProgressBar,
+    QPushButton,
+    QRadioButton,
+    QSlider,
+    QSpinBox,
+    QTimeEdit,
+    QVBoxLayout,
+    QWidget,
+)
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        
+        layout = QVBoxLayout()
+        widgets = [
+            QCheckBox,
+            QComboBox,
+            QDateEdit,
+            QDateTimeEdit,
+            QDial,
+            QDoubleSpinBox,
+            QFontComboBox,
+            QLCDNumber,
+            QLabel,
+            QLineEdit,
+            QProgressBar,
+            QPushButton,
+            QRadioButton,
+            QSlider,
+            QSpinBox,
+            QTimeEdit,
+        ]
 
-        self.setWindowTitle("Rock Paper Scissors")
+        for w in widgets:
+            layout.addWidget(w())
 
-        button = QPushButton("Play")
-
-        self.setFixedSize(QSize(600, 500))
+        widget = QWidget()
+        widget.setLayout(layout)
 
         # Set the central widget of the Window.
-        self.setCentralWidget(button)
+        self.setCentralWidget(widget)
 
 
 app = QApplication(sys.argv)
